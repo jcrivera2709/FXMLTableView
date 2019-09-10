@@ -8,6 +8,10 @@
 <?import javafx.collections.FXCollections?>
 <?import sample.Person?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import sample.FormattedTableCellFactory?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="sample.FXMLTableViewController">
@@ -22,6 +26,10 @@
             <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="100">
                 <cellValueFactory><PropertyValueFactory property="firstName" />
                 </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center">
+                    </FormattedTableCellFactory>
+                </cellFactory>
             </TableColumn>
             <TableColumn text="Last Name" prefWidth="100">
                 <cellValueFactory><PropertyValueFactory property="lastName" />
@@ -50,4 +58,14 @@
             <fx:reference source="firstNameColumn"/>
         </sortOrder>
     </TableView>
+    <HBox spacing="10" alignment="bottom_right" GridPane.columnIndex="0"
+          GridPane.rowIndex="2">
+        <TextField fx:id="firstNameField" promptText="First Name"
+                   prefWidth="90"/>
+        <TextField fx:id="lastNameField" promptText="Last Name"
+                   prefWidth="90"/>
+        <TextField fx:id="emailField" promptText="email"
+                   prefWidth="150"/>
+        <Button text="Add" onAction="#addPerson"/>
+    </HBox>
 </GridPane>
